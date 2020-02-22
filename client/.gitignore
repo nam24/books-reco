@@ -90,3 +90,7 @@ sw.*
 coverage
 
 *.pem
+
+
+env 
+venv
