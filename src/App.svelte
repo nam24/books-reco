@@ -1,5 +1,6 @@
 <script>
-	let name = 'world';
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.css"/>
 
-<h1>Hello {name}!</h1>
+<button>Get Book Recommendations</button>
+<button>Get Info</button>
