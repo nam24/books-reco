@@ -24,6 +24,10 @@ var app = (function () {
     function safe_not_equal(a, b) {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
+
+    function append(target, node) {
+        target.appendChild(node);
+    }
     function insert(target, node, anchor) {
         target.insertBefore(node, anchor || null);
     }
@@ -243,6 +247,10 @@ var app = (function () {
     function dispatch_dev(type, detail) {
         document.dispatchEvent(custom_event(type, Object.assign({ version: '3.18.2' }, detail)));
     }
+    function append_dev(target, node) {
+        dispatch_dev("SvelteDOMInsert", { target, node });
+        append(target, node);
+    }
     function insert_dev(target, node, anchor) {
         dispatch_dev("SvelteDOMInsert", { target, node, anchor });
         insert(target, node, anchor);
@@ -280,24 +288,64 @@ var app = (function () {
     function create_fragment(ctx) {
     	let link;
     	let t0;
-    	let button0;
+    	let section;
+    	let div1;
+    	let div0;
+    	let h1;
     	let t2;
+    	let h2;
+    	let t4;
+    	let div4;
+    	let div2;
+    	let button0;
+    	let t6;
+    	let div3;
     	let button1;
 
     	const block = {
     		c: function create() {
     			link = element("link");
     			t0 = space();
-    			button0 = element("button");
-    			button0.textContent = "Get Book Recommendations";
+    			section = element("section");
+    			div1 = element("div");
+    			div0 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Reading List Recommendations";
     			t2 = space();
+    			h2 = element("h2");
+    			h2.textContent = "Get customised book recommendations";
+    			t4 = space();
+    			div4 = element("div");
+    			div2 = element("div");
+    			button0 = element("button");
+    			button0.textContent = "Book Recommendations";
+    			t6 = space();
+    			div3 = element("div");
     			button1 = element("button");
-    			button1.textContent = "Get Info";
+    			button1.textContent = "Get Information";
     			attr_dev(link, "rel", "stylesheet");
     			attr_dev(link, "href", "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.css");
     			add_location(link, file, 2, 0, 19);
-    			add_location(button0, file, 4, 0, 117);
-    			add_location(button1, file, 5, 0, 159);
+    			attr_dev(h1, "class", "title");
+    			add_location(h1, file, 21, 2, 375);
+    			attr_dev(h2, "class", "subtitle");
+    			add_location(h2, file, 24, 2, 437);
+    			attr_dev(div0, "class", "container");
+    			add_location(div0, file, 20, 3, 349);
+    			attr_dev(div1, "class", "hero-body");
+    			add_location(div1, file, 19, 1, 322);
+    			attr_dev(section, "class", "hero is-link is-bold");
+    			add_location(section, file, 18, 0, 282);
+    			attr_dev(button0, "class", "button is-hovered is-link is-light svelte-1px304k");
+    			add_location(button0, file, 34, 2, 587);
+    			attr_dev(div2, "class", "options svelte-1px304k");
+    			add_location(div2, file, 33, 1, 563);
+    			attr_dev(button1, "class", "button is-hovered is-link is-light svelte-1px304k");
+    			add_location(button1, file, 38, 2, 703);
+    			attr_dev(div3, "class", "options svelte-1px304k");
+    			add_location(div3, file, 37, 1, 679);
+    			attr_dev(div4, "class", "content svelte-1px304k");
+    			add_location(div4, file, 32, 0, 540);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -305,9 +353,19 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, link, anchor);
     			insert_dev(target, t0, anchor);
-    			insert_dev(target, button0, anchor);
-    			insert_dev(target, t2, anchor);
-    			insert_dev(target, button1, anchor);
+    			insert_dev(target, section, anchor);
+    			append_dev(section, div1);
+    			append_dev(div1, div0);
+    			append_dev(div0, h1);
+    			append_dev(div0, t2);
+    			append_dev(div0, h2);
+    			insert_dev(target, t4, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, div2);
+    			append_dev(div2, button0);
+    			append_dev(div4, t6);
+    			append_dev(div4, div3);
+    			append_dev(div3, button1);
     		},
     		p: noop,
     		i: noop,
@@ -315,9 +373,9 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(link);
     			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(button0);
-    			if (detaching) detach_dev(t2);
-    			if (detaching) detach_dev(button1);
+    			if (detaching) detach_dev(section);
+    			if (detaching) detach_dev(t4);
+    			if (detaching) detach_dev(div4);
     		}
     	};
 
